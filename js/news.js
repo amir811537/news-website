@@ -16,25 +16,26 @@ const handleCategory = async () => {
 };
 
 const handleLoadNews = async (categoryId) => {
+   
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
         const data = await res.json();
-
+console.log(data.data)
         const cardContainer = document.getElementById('card-container');
 
-        cardContainer.innerHTML = ''; // Clear existing content
+        cardContainer.innerHTML = ''; 
 
-        data.data.forEach((news) => {
+        data.data?.forEach((news) => {
             const div = document.createElement('div');
             div.innerHTML = `
                 <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="${news.image_url}" alt="${news.title}" /></figure>
+                    <figure><img src="${news?.image_url}" alt="${news.title}" /></figure>
                     <div class="card-body">
                         <h2 class="card-title font-bold">${news.title}</h2>
 
                         <p><span class="font-bold">Author: </span>${news.author.name}</p>
                         <p><span class="font-bold">Published Date:</span> ${news.author.published_date}</p>
-                        <p>Rating: ${news.rating.number} (${news.rating.badge})</p>
+                        <p>Rating: ${news?.rating?.number} (${news?.rating?.badge})</p>
                         <p>Total Views: ${news.total_view}</p>
 
                         <div class="card-actions justify-end">
@@ -69,3 +70,13 @@ const handleLoadNews = async (categoryId) => {
 };
 
 handleCategory();
+handleLoadNews('08')
+
+
+
+
+
+
+
+
+
