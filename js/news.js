@@ -28,7 +28,7 @@ console.log(data.data)
         data.data?.forEach((news) => {
             const div = document.createElement('div');
             div.innerHTML = `
-                <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card bg-base-100 shadow-xl">
                     <figure><img src="${news?.image_url}" alt="${news.title}" /></figure>
                     <div class="card-body">
                         <h2 class="card-title font-bold">${news.title}</h2>
